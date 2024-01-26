@@ -1,0 +1,41 @@
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logout {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.mobileLinks,
+.menuButton {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .links {
+    display: none;
+  }
+
+  .menuButton {
+    display: block;
+    cursor: pointer;
+  }
+
+  .mobileLinks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10rem;
+    right: 0;
+    width: 50vw;
+    height: calc(100vh - 10rem);
+    background-color: var(--color-bg-soft);
+    gap: 1rem;
+  }
+}

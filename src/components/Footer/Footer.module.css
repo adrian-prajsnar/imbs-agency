@@ -1,0 +1,16 @@
+.container {
+  height: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  color: gray;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.text {
+  font-size: 1.2rem;
+}
