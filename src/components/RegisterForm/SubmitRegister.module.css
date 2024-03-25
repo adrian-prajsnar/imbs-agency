@@ -1,0 +1,8 @@
+.registerBtn:hover {
+  color: var(--color-brand);
+  background-color: var(--color-bg);
+}
+
+.registerBtn {
+  border-color: var(--color-brand);
+}

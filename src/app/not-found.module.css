@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  gap: 10rem;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 3rem;
+  font-size: 2rem;
+}
+
+.heading {
+  font-size: 4.4rem;
+  font-weight: 600;
+}
+
+.pageName {
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--color-brand);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.imgContainer {
+  flex: 1;
+  position: relative;
+}

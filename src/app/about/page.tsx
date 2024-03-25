@@ -14,13 +14,12 @@ function AboutPage() {
         <div className={styles.textContainer}>
           <h2 className={styles.subtitle}>About Agency</h2>
           <h1 className={styles.title}>
-            We create digital ideas that are bigger, bolder, braver and better
+            We Innovate with Ideas that Inspire, Transform, and Excel
           </h1>
           <p className={styles.desc}>
-            We create digital ideas that are bigger, bolder, braver and better.
-            We believe in good ideas flexibility and precission. We are
-            world&apos;s Our Special Team best consulting and finance solution
-            provider. Wide range of web and software development services.
+            {
+              "At Innovative Marketing, Branding & SEO Agency, we are passionate about crafting compelling brand stories, implementing effective marketing strategies, and optimizing your online presence. Our team of experts is dedicated to driving your business's success by leveraging creativity, branding, and SEO. Join us on the journey to digital excellence."
+            }
           </p>
           <div className={styles.boxes}>
             <div className={styles.box}>
@@ -28,17 +27,17 @@ function AboutPage() {
               <p>Year of experience</p>
             </div>
             <div className={styles.box}>
-              <h3 className={styles.boxTitle}>10 K+</h3>
-              <p>Year of experience</p>
+              <h3 className={styles.boxTitle}>234 K+</h3>
+              <p>People reached</p>
             </div>
             <div className={styles.box}>
-              <h3 className={styles.boxTitle}>10 K+</h3>
-              <p>Year of experience</p>
+              <h3 className={styles.boxTitle}>5 K+</h3>
+              <p>Services and solutions</p>
             </div>
           </div>
         </div>
         <div className={styles.imgContainer}>
-          <Image src='/about.png' alt='' fill className={styles.img} />
+          <Image src='/1.svg' alt='' fill className={styles.img} />
         </div>
       </div>
     </div>

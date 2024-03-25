@@ -9,7 +9,7 @@ async function AdminPosts() {
 
   return (
     <ul className={styles.container}>
-      <h1>Posts</h1>
+      <h1 className={styles.heading}>Posts</h1>
       {posts.map(post => (
         <li className={styles.post} key={post._id.toString()}>
           <div className={styles.details}>
@@ -19,7 +19,7 @@ async function AdminPosts() {
               width={50}
               height={50}
             />
-            <h2 className={styles.postTitle}>{post.title}</h2>
+            <h3 className={styles.postTitle}>{post.title}</h3>
           </div>
           <form action={deletePost}>
             <input type='hidden' name='id' value={post._id.toString()} />

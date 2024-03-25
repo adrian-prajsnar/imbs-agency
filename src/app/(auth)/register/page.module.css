@@ -1,16 +1,31 @@
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 10rem;
+}
+
+.registerContainer {
+  flex: 1;
 }
 
 .wrapper {
   width: 50rem;
-  background-color: var(--color-bg-soft);
+  background-color: var(--color-bg-light);
   padding: 5rem;
   display: flex;
   flex-direction: column;
   text-align: center;
   gap: 3rem;
   border-radius: 5px;
+}
+
+.heading {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+}
+
+.imgContainer {
+  flex: 1;
+  position: relative;
+  width: 67.8rem;
 }

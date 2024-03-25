@@ -4,7 +4,6 @@ import { Post, User } from './databaseModels';
 import { connectToDb } from './databaseConnection';
 import { signIn, signOut } from './auth';
 import bcrypt from 'bcrypt';
-import { ObjectId } from 'mongoose';
 
 export async function addPost(prevState: any, formData: FormData) {
   const { title, desc, slug, userId } = Object.fromEntries(formData);
@@ -21,7 +20,7 @@ export async function addPost(prevState: any, formData: FormData) {
     revalidatePath('/admin');
   } catch (error) {
     console.error(error);
-    throw new Error('There was an error while adding post.');
+    return { error: 'Something went wrong while adding post.' };
   }
 }
 
@@ -34,7 +33,7 @@ export async function deletePost(formData: FormData) {
     revalidatePath('/admin');
   } catch (error) {
     console.error(error);
-    throw new Error('There was an error while deleting post.');
+    return { error: 'Something went wrong while deleting post' };
   }
 }
 
@@ -52,7 +51,7 @@ export async function addUser(prevState: any, formData: FormData) {
     revalidatePath('/admin');
   } catch (error) {
     console.error(error);
-    throw new Error('There was an error while adding user.');
+    return { error: 'Something went wrong while adding user.' };
   }
 }
 
@@ -62,12 +61,12 @@ export async function deleteUser(formData: FormData) {
     connectToDb();
     await Post.deleteMany({ userId: id });
 
-    // FIXME: id must be ObjectId but it is string (but somehow it's working currently)
+    // FIXME: id should be ObjectId but it is passed as string (but somehow it's working currently)
     await User.findByIdAndDelete(id);
     revalidatePath('/admin');
   } catch (error) {
     console.error(error);
-    throw new Error('There was an error while deleting user.');
+    return { error: 'Something went wrong while deleting user' };
   }
 }
 
@@ -83,16 +82,33 @@ export async function handleLogout() {
 
 export async function register(prevState: any, formData: FormData) {
   const {
-    username,
-    email,
+    username: usr,
+    email: eml,
     password: pwd,
-    passwordRepeat,
+    passwordRepeat: pwdR,
     img,
   } = Object.fromEntries(formData);
 
+  const username = usr as string;
+  const email = eml as string;
   const password = pwd as string;
+  const passwordRepeat = pwdR as string;
+  const emailRegex: RegExp = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+  if (!username || !email || !password || !passwordRepeat)
+    return { error: 'Fields cannot be empty' };
+
+  if (username.length < 3)
+    return { error: 'Username must be at least 3 characters long' };
+
+  if (password.length < 8)
+    return { error: 'Password must be at least 8 characters long' };
 
   if (password !== passwordRepeat) return { error: 'Passwords do not match' };
+
+  if (!emailRegex.test(email)) {
+    return { error: 'Invalid email format' };
+  }
 
   try {
     connectToDb();
@@ -117,7 +133,7 @@ export async function register(prevState: any, formData: FormData) {
     return { success: true };
   } catch (error) {
     console.error(error);
-    return { error: 'There was an error while registering.' };
+    return { error: 'Something went wrong while registering' };
   }
 }
 
@@ -128,6 +144,7 @@ type SignInError = {
 
 export async function login(prevState: any, formData: FormData) {
   const { username, password } = Object.fromEntries(formData);
+  if (!username || !password) return { error: 'Fields cannot be empty' };
 
   try {
     await signIn('credentials', { username, password });
@@ -137,8 +154,9 @@ export async function login(prevState: any, formData: FormData) {
     if (typeof error === 'object' && error !== null && 'type' in error) {
       const signInError = error as SignInError;
 
-      if (signInError.type === 'CredentialsSignin')
+      if (signInError.type === 'CredentialsSignin') {
         return { error: 'Invalid username or password' };
+      }
     }
 
     throw error;

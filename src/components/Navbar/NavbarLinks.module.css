@@ -1,13 +1,7 @@
 .links {
   display: flex;
   align-items: center;
-  gap: 1rem;
-}
-
-.logout {
-  padding: 1rem;
-  cursor: pointer;
-  font-weight: bold;
+  gap: 4rem;
 }
 
 .mobileLinks,
@@ -35,7 +29,7 @@
     right: 0;
     width: 50vw;
     height: calc(100vh - 10rem);
-    background-color: var(--color-bg-soft);
+    background-color: var(--color-bg-light);
     gap: 1rem;
   }
 }

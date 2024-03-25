@@ -2,6 +2,12 @@ import { getPosts } from '@/services/api';
 import styles from './page.module.css';
 import BlogPost from '@/components/BlogPost/BlogPost';
 import { ObjectId } from 'mongoose';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Blog Page',
+  description: 'Blog Description',
+};
 
 export type Post = {
   _id: ObjectId;

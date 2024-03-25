@@ -1,0 +1,8 @@
+.loginBtn:hover {
+  color: var(--color-brand);
+  background-color: var(--color-bg);
+}
+
+.loginBtn {
+  border-color: var(--color-brand);
+}

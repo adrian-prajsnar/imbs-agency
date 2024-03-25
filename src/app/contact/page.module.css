@@ -1,21 +1,22 @@
 .container {
   display: flex;
-  align-items: center;
   gap: 10rem;
 }
 
 .imgContainer {
   flex: 1;
-  height: 50rem;
   position: relative;
+  width: 67.8rem;
 }
 
 .img {
   object-fit: contain;
+  min-width: 50rem;
 }
 
 .formContainer {
   flex: 1;
+  width: 50%;
 }
 
 .form {
@@ -24,24 +25,26 @@
   gap: 2rem;
 }
 
-.form input,
-.form textarea {
-  border: none;
-  outline: none;
-  padding: 2rem;
-  border-radius: 5px;
-  background-color: var(--color-bg-soft);
-  color: var(--color-text);
+.heading {
+  font-size: 3.2rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 2rem;
 }
 
-.form button {
-  padding: 2rem;
-  background-color: var(--color-btn);
-  color: var(--color-text);
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.submitForm {
+  border-color: var(--color-brand);
+}
+
+.submitForm:hover {
+  color: var(--color-brand);
+  background-color: var(--color-bg-light);
 }
 
 @media (max-width: 768px) {

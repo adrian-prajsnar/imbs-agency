@@ -3,27 +3,33 @@
 import { login } from '@/services/actions';
 import styles from './LoginForm.module.css';
 import { useFormState } from 'react-dom';
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import SubmitLogin from './SubmitLogin';
 
 function LoginForm() {
   const [state, formAction] = useFormState(login, undefined);
-  const router = useRouter();
-
-  // useEffect(() => {
-  //   state?.success && router.push('/login');
-  // }, [router, state?.success]);
 
   return (
     <form action={formAction} className={styles.form}>
-      <input type='text' placeholder='username' name='username' />
-      <input type='password' placeholder='password' name='password' />
-      <button>Log in</button>
-      {state?.error}
-      <Link href='/register'>
-        {"Don't have an account?"} <b>Register</b>
-      </Link>
+      <div className={styles.formRow}>
+        <label htmlFor='username'>Username</label>
+        <input type='text' id='username' name='username' />
+      </div>
+
+      <div className={styles.formRow}>
+        <label htmlFor='password'>Password</label>
+        <input type='password' id='password' name='password' />
+      </div>
+
+      <SubmitLogin />
+
+      {state?.error && (
+        <p className={styles.error}>{state?.error}, please try again.</p>
+      )}
+
+      <p className={styles.register}>
+        {"Don't have an account?"} <Link href='/register'>Sign up</Link>
+      </p>
     </form>
   );
 }

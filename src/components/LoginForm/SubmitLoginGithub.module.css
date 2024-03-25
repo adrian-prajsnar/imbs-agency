@@ -1,0 +1,16 @@
+.github {
+  width: 100%;
+  color: var(--color-text-dark);
+  background-color: var(--color-bg);
+}
+
+.github:hover {
+  color: var(--color-brand);
+}
+/* 
+.github:disabled {
+  border-color: var(--color-text-darkest);
+  color: var(--color-text-darkest);
+  background-color: var(--color-bg);
+  cursor: wait;
+} */

@@ -1,11 +1,24 @@
 :root {
-  --color-bg: #0d0c22;
-  --color-bg-soft: #2d2b42;
+  /* https://tailwindcss.com/docs/customizing-colors */
 
-  --color-text: #fff;
-  --color-text-soft: #e5e5e5;
+  /* Stone */
+  --color-bg: #171717;
+  --color-bg-transparent: rgb(23, 23, 23, 0.95);
+  --color-bg-light: #262626;
 
-  --color-btn: #3673fd;
+  /* Stone */
+  --color-text: #f5f5f4;
+  --color-text-dark: #e7e5e4;
+  --color-text-darker: #d6d3d1;
+  --color-text-darkest: #a8a29e;
+
+  /* Yellow */
+  --color-brand: #facc15;
+  --color-brand-dark: #eab308;
+
+  /* RED */
+  --color-danger: #b91c1c;
+  --color-danger-light: #f87171;
 }
 
 *,
@@ -14,6 +27,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth !important;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: -1px;
 }
 
 html {
@@ -21,7 +40,9 @@ html {
 }
 
 body {
-  font-size: 1.6rem;
+  min-height: 100vh;
+  font-size: 1.8rem;
+  line-height: 1.5;
   background-color: var(--color-bg);
   color: var(--color-text);
 }
@@ -29,20 +50,48 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+  font-size: inherit;
+  font-family: inherit;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  max-width: 153.6rem;
-  margin: auto;
-  padding: 0 4rem;
-  min-height: 100vh;
+button {
+  font-weight: 600;
+  padding: 2rem;
+  color: var(--color-bg);
+  background-color: var(--color-brand);
+  border: none;
+  border-radius: 5px;
+  border: 1px solid currentColor;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-@media (max-width: 1280px) {
-  .container {
-    padding: 0 2rem;
-  }
+button:disabled,
+button:disabled:hover {
+  border-color: var(--color-text-darkest);
+  color: var(--color-text-darkest);
+  background-color: var(--color-bg);
+  cursor: wait;
+}
+
+input,
+textarea,
+select {
+  font-size: inherit;
+  font-family: inherit;
+  padding: 2rem;
+  background-color: var(--color-bg-light);
+  border: none;
+  border-radius: 5px;
+  color: var(--color-text);
+}
+
+textarea {
+  resize: vertical;
+}
+
+ul {
+  list-style: none;
 }

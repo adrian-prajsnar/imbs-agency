@@ -5,6 +5,7 @@ import NavLink from './NavLink';
 import Image from 'next/image';
 import { handleLogout } from '@/services/actions';
 import { Session } from 'next-auth';
+import SubmitLogout from './SubmitLogout';
 
 export type NavLinks = {
   title: string;
@@ -13,7 +14,7 @@ export type NavLinks = {
 
 const links: NavLinks[] = [
   {
-    title: 'Homepage',
+    title: 'Home',
     path: '/',
   },
   {
@@ -32,7 +33,6 @@ const links: NavLinks[] = [
 
 function NavbarLinks({ session }: { session: Session | null }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const isAdmin: boolean = true;
 
   return (
     <div className={styles.container}>
@@ -47,11 +47,11 @@ function NavbarLinks({ session }: { session: Session | null }) {
               <NavLink item={{ title: 'Admin', path: '/admin' }} />
             )}
             <form action={handleLogout}>
-              <button className={styles.logout}>Logout</button>
+              <SubmitLogout />
             </form>
           </>
         ) : (
-          <NavLink item={{ title: 'Login', path: '/login' }} />
+          <NavLink item={{ title: 'Sign in', path: '/login' }} />
         )}
       </div>
       <Image

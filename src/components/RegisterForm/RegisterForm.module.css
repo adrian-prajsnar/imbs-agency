@@ -5,20 +5,29 @@
   gap: 3rem;
 }
 
-.form input {
-  padding: 2rem;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  border: none;
-  border-radius: 5px;
+.formRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.form button {
-  padding: 2rem;
-  cursor: pointer;
-  background-color: var(--color-btn);
-  color: var(--color-text);
-  font-weight: bold;
-  border: none;
-  border-radius: 5px;
+.formRow input {
+  background-color: var(--color-bg);
+}
+
+.formRow label {
+  text-align: left;
+}
+
+.error {
+  color: var(--color-danger-light);
+}
+
+.login a {
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.login a:hover {
+  color: var(--color-brand);
 }

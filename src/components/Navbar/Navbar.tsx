@@ -9,12 +9,14 @@ async function Navbar() {
   console.log(session);
 
   return (
-    <header className={styles.container}>
-      <Link href='/' className={styles.logo}>
-        Logo
-      </Link>
-      <div>
-        <NavbarLinks session={session} />
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <Link href='/' className={styles.logo}>
+          IMBS Agency
+        </Link>
+        <nav>
+          <NavbarLinks session={session} />
+        </nav>
       </div>
     </header>
   );
